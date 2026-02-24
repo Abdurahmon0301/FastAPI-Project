@@ -10,7 +10,7 @@ SQLALCHEMY_DATABASE_URL = "sqlite:///./app.db"
 
 engine = create_engine(
     SQLALCHEMY_DATABASE_URL,
-    connect_args={"check_same_thread": True}  # Faqat SQLite uchun
+    connect_args={"check_same_thread": False}  # Faqat SQLite uchun
 )
 
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
