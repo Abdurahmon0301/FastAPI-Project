@@ -5,7 +5,7 @@ from schema.schema import PostBase
 def get_posts(db: Session):
     return db.query(Post).all()
 
-# def get_user_by_email(db: Session, email: str):
+# def get_user_by_email(db:Session, email: str):
 #     return db.query(User).filter(User.email == email).first()
 
 # def get_users(db: Session, skip: int = 0, limit: int = 100):
