@@ -6,7 +6,7 @@ from sqlalchemy.orm import sessionmaker
 # SQLALCHEMY_DATABASE_URL = "sqlite:///./app.db"
 
 # PostgreSQL uchun:
-SQLALCHEMY_DATABASE_URL = "postgresql://postgres:1234@localhost/fastapi_blog"
+SQLALCHEMY_DATABASE_URL = "postgresql://postgres:1234@localhost/postgres"
 
 engine = create_engine(
     SQLALCHEMY_DATABASE_URL,
@@ -16,3 +16,12 @@ engine = create_engine(
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 Base = declarative_base()
+
+
+# Database dependency
+def get_db():
+    db = SessionLocal()
+    try:
+        yield db
+    finally:
+        db.close()
